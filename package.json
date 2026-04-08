@@ -1,0 +1,18 @@
+{
+  "name": "powerbarre-flash-sale-node-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node.js app for the Powerbarre Flash Sale dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "pdf": "node scripts/generate-pdf.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "puppeteer": "^24.7.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
