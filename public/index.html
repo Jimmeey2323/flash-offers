@@ -706,7 +706,7 @@ function getDropMeta(drops,currentIdx){
   const rateChangePct=prevPrice===null?null:parseFloat((((pr-prevPrice)/prevPrice)*100).toFixed(1));
   let displaySignal='drop';
   if(entry.flag==='floor')displaySignal='floor';
-  else if(entry.flag==='trap')displaySignal='trap';
+  else if(entry.flag==='spike')displaySignal='spike';
   else if(entry.flag==='midnight')displaySignal='midnight';
   else if(rateChangePct!==null&&rateChangePct>0)displaySignal='spike';
   return{entry,pr,actualPct,prevIdx,prevPrice,rateChangePct,displaySignal};
@@ -1103,12 +1103,40 @@ function init(){
 </script>
 
 <!-- Add Intercom initialization script -->
-<script type="module">
-  import Intercom from '@intercom/messenger-js-sdk';
-
-  Intercom({
-    app_id: 'hzmswx1k',
-  });
+<script>
+  (function() {
+    var w = window;
+    var ic = w.Intercom;
+    if (typeof ic === "function") {
+      ic('reattach_activator');
+      ic('update', w.intercomSettings);
+    } else {
+      var d = document;
+      var i = function() {
+        i.c(arguments);
+      };
+      i.q = [];
+      i.c = function(args) {
+        i.q.push(args);
+      };
+      w.Intercom = i;
+      var l = function() {
+        var s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://widget.intercom.io/widget/hzmswx1k';
+        var x = d.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      };
+      if (document.readyState === 'complete') {
+        l();
+      } else if (w.attachEvent) {
+        w.attachEvent('onload', l);
+      } else {
+        w.addEventListener('load', l, false);
+      }
+    }
+  })();
 </script>
 
 /* Shuffle offers and joker cards dynamically */
